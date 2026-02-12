@@ -1,0 +1,59 @@
+
+
+const express = require("express");
+const cors = require("cors");
+require("express-async-errors");
+const helmet = require("helmet");
+const rateLimit = require("express-rate-limit");
+
+
+
+
+const authRoutes = require("./routes/auth.routes");
+const publicListings = require("./routes/public.listing.routes");
+const listerListings = require("./routes/lister.listing.routes");
+const adminListings = require("./routes/admin.listing.routes");
+const inquiryRoutes = require("./routes/inquiry.routes");
+const webhookRoutes = require("./routes/webhook.routes");
+const paymentRoutes = require("./routes/payment.routes");
+const errorHandler = require("./middleware/error.middleware");
+
+
+
+
+
+
+
+
+
+
+
+
+
+const app = express();
+
+app.use(helmet());
+
+app.use(
+  rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 200
+  })
+);
+
+app.use(cors({ origin: process.env.FRONTEND_URL }));
+app.use(express.json());
+
+app.use("/api/auth", authRoutes);
+app.use("/api/listings", publicListings);
+app.use("/api/lister/listings", listerListings);
+app.use("/api/admin/listings", adminListings);
+app.use("/api/inquiries", inquiryRoutes);
+app.use("/api/admin/inquiries", require("./routes/admin.inquiry.routes"));
+app.use("/api/webhooks", webhookRoutes);
+app.use("/api/payments", paymentRoutes);
+app.use("/api/admin/metrics", require("./routes/admin.metrics.routes"));
+app.use(errorHandler);
+
+
+module.exports = app;
