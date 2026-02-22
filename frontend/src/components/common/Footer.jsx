@@ -63,7 +63,7 @@ export default function Footer() {
                 {[
                   { label: 'Browse Listings', href: '/listings' },
                   { label: 'How It Works', href: '/how-it-works' },
-                  { label: 'Safety Tips', href: '/safety' },
+               
                   { label: 'FAQ', href: '/faq' },
                 ].map((link) => (
                   <li key={link.label}>
@@ -85,9 +85,7 @@ export default function Footer() {
               </h3>
               <ul className="space-y-3">
                 {[
-                  { label: 'Privacy Policy', href: '/privacy' },
-                  { label: 'Terms of Service', href: '/terms' },
-                  { label: 'Cookie Policy', href: '/cookies' },
+                  { label: 'Terms of Service', href: '/terms-of-service' },
                   { label: 'Contact Us', href: '/contact' },
                 ].map((link) => (
                   <li key={link.label}>

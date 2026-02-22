@@ -109,6 +109,26 @@ export default function InquiryForm({ listingId }) {
             />
           </div>
 
+          <div>                 
+              <label className="block text-sm font-medium mb-2" style={{ color: '#242B38' }}>
+                Phone 
+              </label>
+              <input
+                name="phone"
+                type="tel"
+                value={form.phone}
+                placeholder="(Optional) Your phone number"
+                className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all"
+                style={{ 
+                  borderColor: '#95BDCB',
+                  color: '#242B38',
+                  backgroundColor: '#FFFF'
+                }}
+                onChange={handleChange}
+              />
+            </div> 
+
+
           <div>
             <label className="block text-sm font-medium mb-2" style={{ color: '#242B38' }}>
               Your Message

@@ -17,6 +17,9 @@ const inquiryRoutes = require("./routes/inquiry.routes");
 const webhookRoutes = require("./routes/webhook.routes");
 const paymentRoutes = require("./routes/payment.routes");
 const errorHandler = require("./middleware/error.middleware");
+const leadRoutes = require("./routes/lead.routes");
+const listerInquiryRoutes = require("./routes/lister.inquiry.routes");
+const userRoutes = require("./routes/admin.users");
 
 
 
@@ -52,7 +55,13 @@ app.use("/api/inquiries", inquiryRoutes);
 app.use("/api/admin/inquiries", require("./routes/admin.inquiry.routes"));
 app.use("/api/webhooks", webhookRoutes);
 app.use("/api/payments", paymentRoutes);
-app.use("/api/admin/metrics", require("./routes/admin.metrics.routes"));
+app.use("/api/leads", leadRoutes);
+app.use(
+  "/api/lister/inquiries", listerInquiryRoutes
+);
+app.use("/api/admin/users", userRoutes);
+
+
 app.use(errorHandler);
 
 

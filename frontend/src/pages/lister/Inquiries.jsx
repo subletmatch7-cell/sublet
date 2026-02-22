@@ -154,6 +154,7 @@ export default function Inquiries() {
                   </div>
                   <div>
                     <p className="font-medium text-gray-900">{selectedInquiry.name}</p>
+                    <p className="text-sm text-gray-600">{selectedInquiry.phone || "No phone provided"}</p>
                     <p className="text-sm text-gray-600">{selectedInquiry.email}</p>
                   </div>
                 </div>

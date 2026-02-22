@@ -6,7 +6,7 @@ const storage = new CloudinaryStorage({
   cloudinary,
   params: {
     folder: "subletmatch/listings",
-    allowed_formats: ["jpg", "jpeg", "png", "webp"]
+    allowed_formats: ["jpg", "jpeg", "png", "webp", "jfif", "avif"]
   }
 });
 

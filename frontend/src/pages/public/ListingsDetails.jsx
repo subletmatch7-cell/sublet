@@ -5,14 +5,16 @@ import InquiryForm from "../../components/listings/InquiryForm";
 import { Link } from "react-router-dom";
 
 export default function ListingDetails() {
-  useEffect( () => {
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  
   const { id } = useParams();
   const [listing, setListing] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [inquirySent, setInquirySent] = useState(false);
+  const [showPhone, setShowPhone] = useState(false);
 
   useEffect(() => {
     fetchListing();
@@ -34,9 +36,13 @@ export default function ListingDetails() {
     setInquirySent(true);
   };
 
+  const handleCallClick = () => {
+    setShowPhone(true);
+  };
+
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 py-8">
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="animate-pulse">
             <div className="h-8 bg-gray-200 rounded w-3/4 mb-4"></div>
@@ -53,14 +59,14 @@ export default function ListingDetails() {
 
   if (!listing) {
     return (
-      <div className="min-h-screen bg-gray-50 py-12">
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-red-50 flex items-center justify-center">
             <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </div>
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Listing Not Found</h2>
+          <h2 className="text-xl font-semibold text-[#242B38] mb-2">Listing Not Found</h2>
           <p className="text-gray-600 mb-6">The property listing you're looking for doesn't exist or has been removed.</p>
           <Link
             to="/listings"
@@ -77,7 +83,7 @@ export default function ListingDetails() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <nav className="mb-6">
@@ -94,7 +100,7 @@ export default function ListingDetails() {
               </Link>
             </li>
             <li className="text-gray-400">/</li>
-            <li className="text-gray-900 font-medium truncate max-w-xs">
+            <li className="text-[#242B38] font-medium truncate max-w-xs">
               {listing.title}
             </li>
           </ol>
@@ -173,7 +179,7 @@ export default function ListingDetails() {
 
             {/* Property Details */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Property Details</h2>
+              <h2 className="text-xl font-semibold text-[#242B38] mb-4">Property Details</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div>
@@ -187,7 +193,7 @@ export default function ListingDetails() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
-                      <span className="text-gray-900">{listing.city}</span>
+                      <span className="text-[#242B38]">{listing.city}{listing.neighborhood ? `, ${listing.neighborhood}` : ''}</span>
                     </div>
                   </div>
                 </div>
@@ -199,7 +205,7 @@ export default function ListingDetails() {
                         <svg className="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        <span className="text-gray-900">
+                        <span className="text-[#242B38]">
                           {new Date(listing.availableFrom).toLocaleDateString('en-US', { 
                             weekday: 'long', 
                             year: 'numeric', 
@@ -216,7 +222,7 @@ export default function ListingDetails() {
                       <svg className="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
-                      <span className="text-gray-900">{listing.owner?.name || "Private Lister"}</span>
+                      <span className="text-[#242B38]">{listing.owner?.name || "Private Lister"}</span>
                     </div>
                   </div>
                 </div>
@@ -225,7 +231,7 @@ export default function ListingDetails() {
 
             {/* Description */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Description</h2>
+              <h2 className="text-xl font-semibold text-[#242B38] mb-4">Description</h2>
               {listing.description ? (
                 <div className="prose prose-gray max-w-none">
                   <p className="text-gray-700 whitespace-pre-line leading-relaxed">
@@ -238,9 +244,63 @@ export default function ListingDetails() {
             </div>
           </div>
 
-          {/* Right Column - Inquiry Form */}
+          {/* Right Column - Contact & Inquiry */}
           <div className="lg:col-span-1">
-            <div className="sticky top-24">
+            <div className="sticky top-24 space-y-6">
+              {/* Call Lister Button - New Section */}
+              {listing.phone && (
+                <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                  <h4 className="font-medium text-[#242B38] mb-3 flex items-center">
+                    <svg className="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    Quick Contact
+                  </h4>
+                  
+                  {!showPhone ? (
+                    <div>
+                      <button
+                        onClick={handleCallClick}
+                        className="w-full px-4 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center"
+                      >
+                        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        Call Lister
+                      </button>
+                      <p className="text-xs text-gray-500 mt-2 text-center">
+                        Click to reveal phone number
+                      </p>
+                    </div>
+                  ) : (
+                    <div>
+                      <a
+                        href={`tel:${listing.phone}`}
+                        className="w-full px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center"
+                      >
+                        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        {listing.phone}
+                      </a>
+                      <p className="text-xs text-gray-500 mt-2 text-center">
+                        Tap number to call
+                      </p>
+                    </div>
+                  )}
+                  
+                  <div className="mt-3 pt-3 border-t border-gray-100">
+                    <p className="text-xs text-gray-500 flex items-center">
+                      <svg className="w-4 h-4 text-green-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                      Your number is only shared when you call
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Inquiry Form */}
               {inquirySent ? (
                 <div className="bg-white rounded-xl shadow-sm border border-green-200 p-6 text-center">
                   <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-50 flex items-center justify-center">
@@ -248,9 +308,9 @@ export default function ListingDetails() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Inquiry Sent!</h3>
+                  <h3 className="text-lg font-semibold text-[#242B38] mb-2">Inquiry Sent!</h3>
                   <p className="text-gray-600 mb-4">
-                    Thank you for your interest. {listing.owner?.name || "The lister"} will contact you shortly.
+                    Thank you for your interest. {listing.owner?.name?.split(' ')[0] || "The lister"} will contact you shortly.
                   </p>
                   <Link
                     to="/listings"
@@ -267,18 +327,30 @@ export default function ListingDetails() {
               )}
               
               {/* Safety Tips */}
-              <div className="mt-6 bg-white rounded-xl shadow-sm border border-gray-200 p-5">
-                <h4 className="font-medium text-gray-900 mb-3 flex items-center">
+              <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                <h4 className="font-medium text-[#242B38] mb-3 flex items-center">
                   <svg className="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                   Safety Tips
                 </h4>
                 <ul className="space-y-2">
-                  <li className="text-sm text-gray-600">• Always verify the lister's identity</li>
-                  <li className="text-sm text-gray-600">• Schedule in-person or virtual tours</li>
-                  <li className="text-sm text-gray-600">• Never send money without a contract</li>
-                  <li className="text-sm text-gray-600">• Use secure payment methods</li>
+                  <li className="text-sm text-gray-600 flex items-start">
+                    <span className="text-[#3BC0E9] mr-2">•</span>
+                    Always verify the lister's identity
+                  </li>
+                  <li className="text-sm text-gray-600 flex items-start">
+                    <span className="text-[#3BC0E9] mr-2">•</span>
+                    Schedule in-person or virtual tours
+                  </li>
+                  <li className="text-sm text-gray-600 flex items-start">
+                    <span className="text-[#3BC0E9] mr-2">•</span>
+                    Never send money without a contract
+                  </li>
+                  <li className="text-sm text-gray-600 flex items-start">
+                    <span className="text-[#3BC0E9] mr-2">•</span>
+                    Use secure payment methods
+                  </li>
                 </ul>
               </div>
             </div>

@@ -11,7 +11,8 @@ export default function CreateListing() {
     price: "",
     availableFrom: "",
     availableTo: "",
-    description: ""
+    description: "",
+    phone: "" // Added phone number field
   });
   const [images, setImages] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -60,6 +61,11 @@ export default function CreateListing() {
     if (!form.description.trim()) newErrors.description = "Description is required";
     if (images.length === 0) newErrors.images = "At least one image is required";
     
+    // Phone validation (optional but must be valid if provided)
+    if (form.phone && !/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(form.phone)) {
+      newErrors.phone = "Please enter a valid phone number";
+    }
+    
     // Date validation
     if (form.availableFrom && form.availableTo) {
       const fromDate = new Date(form.availableFrom);
@@ -103,11 +109,11 @@ export default function CreateListing() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Create New Listing</h1>
+          <h1 className="text-3xl font-bold text-[#242B38] mb-2">Create New Listing</h1>
           <p className="text-gray-600">
             Fill out the form below to list your property. All listings require admin approval.
           </p>
@@ -118,7 +124,7 @@ export default function CreateListing() {
           <form onSubmit={submit} className="space-y-6">
             {/* Basic Information */}
             <div>
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Basic Information</h2>
+              <h2 className="text-lg font-semibold text-[#242B38] mb-4">Basic Information</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -197,9 +203,50 @@ export default function CreateListing() {
               </div>
             </div>
 
+            {/* Contact Information */}
+            <div>
+              <h2 className="text-lg font-semibold text-[#242B38] mb-4">Contact Information</h2>
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                <p className="text-sm text-blue-800 flex items-start">
+                  <svg className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Your phone number will be hidden on the listing. Renters will see a "Call Lister" button that initiates a call without revealing your number until they're ready to connect.</span>
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Phone Number (Optional - for "Call Lister" feature)
+                  </label>
+                  <div className="relative">
+                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+                      📞
+                    </span>
+                    <input
+                      name="phone"
+                      type="tel"
+                      value={form.phone}
+                      placeholder="+1 (555) 123-4567"
+                      className={`w-full px-4 py-3 pl-10 rounded-lg border focus:outline-none focus:ring-2 transition-all ${
+                        errors.phone ? 'border-red-300 focus:ring-red-500' : 'border-gray-300 focus:ring-[#3BC0E9] focus:border-transparent'
+                      }`}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  {errors.phone && (
+                    <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+                  )}
+                  <p className="mt-1 text-xs text-gray-500">
+                    Format: +1 (555) 123-4567 or 555-123-4567
+                  </p>
+                </div>
+              </div>
+            </div>
+
             {/* Availability */}
             <div>
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Availability</h2>
+              <h2 className="text-lg font-semibold text-[#242B38] mb-4">Availability</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">

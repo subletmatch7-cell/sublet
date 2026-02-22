@@ -3,7 +3,11 @@ import Navbar from "../components/common/Navbar";
 
 const links = [
   { label: "Listings", to: "/admin/dashboard" },
-  { label: "Metrics", to: "/admin/metrics" }
+  { label: "Inquiries", to: "/admin/inquiries" },
+  { label: "Leads", to: "/admin/leads" },
+  { label: "Users", to: "/admin/users" },
+  { label: "Manage Listings", to: "/admin/manage-listings" },
+  { label: "Settings", to: "/admin/settings" }
 ];
 
 export default function AdminLayout({ children }) {

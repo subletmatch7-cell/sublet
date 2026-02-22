@@ -64,4 +64,19 @@ router.put(
   }
 );
 
+// Delete listing
+
+router.delete("/:id", async (req, res) => {
+  const listing = await Listing.findOneAndDelete({
+    _id: req.params.id,
+    owner: req.user._id
+  });
+
+  if (!listing) {
+    return res.status(404).json({ message: "Listing not found" });
+  }
+
+  res.json({ message: "Listing deleted" });
+});
+
 module.exports = router;

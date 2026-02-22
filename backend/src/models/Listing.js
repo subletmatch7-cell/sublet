@@ -9,6 +9,7 @@ const listingSchema = new mongoose.Schema(
     availableFrom: { type: Date, required: true },
     availableTo: { type: Date },
     description: { type: String },
+    phone: { type: String },
     images: [String],
 
     owner: {
