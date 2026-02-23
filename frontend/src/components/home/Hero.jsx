@@ -64,16 +64,16 @@ export default function HeroSection() {
 
           {/* Heading */}
           <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-            Find Verified Short-Term Sublets{' '}
+          Find Short-Term Housing in  <br/> NYC{' '}
             <span className="bg-gradient-to-r from-[#3BC0E9] to-[#95BDCB] bg-clip-text text-transparent">
-              Without the Chaos
+              Quickly
             </span>
           </h1>
 
           {/* Description */}
           <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Built for interns and young professionals who need trusted,
-            short-term housing in competitive cities. Zero scams, fully verified.
+            Built for interns and young professionals moving to NYC. Find,
+            short-term housing in without hustle. 
           </p>
 
           {/* CTA Buttons */}
@@ -83,7 +83,7 @@ export default function HeroSection() {
               className="group relative px-8 py-4 bg-gradient-to-r from-[#3BC0E9] to-[#95BDCB] text-white rounded-xl font-medium hover:shadow-lg hover:shadow-[#3BC0E9]/20 transition-all duration-300 hover:scale-105"
             >
               <span className="relative z-10 flex items-center justify-center">
-                Browse Listings
+              Browse Sublets
                 <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
@@ -94,7 +94,7 @@ export default function HeroSection() {
               to="/register"
               className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white rounded-xl font-medium hover:bg-white/20 hover:border-white/40 transition-all duration-300 hover:scale-105"
             >
-              List Your Space
+               Post Your Apartments
             </Link>
           </div>
 

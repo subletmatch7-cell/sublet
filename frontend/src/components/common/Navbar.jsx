@@ -30,7 +30,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center group">
             <img src="/assets/logo.jpeg"
-                className="w-full h-15"
+                className="md:w-full h-15 w-3/4 h-10"
             />
           </Link>
 
@@ -40,6 +40,9 @@ export default function Navbar() {
               { path: "/", label: "Home" },
               { path: "/about", label: "About" },
               { path: "/listings", label: "Listings" },
+              { path: "/faq", label: "FAQs"},
+              { path: "/contact", label: "Contact Us"}, 
+              
             ].map((item) => (
               <Link
                 key={item.path}
@@ -172,6 +175,8 @@ export default function Navbar() {
             { path: "/", label: "Home" },
             { path: "/about", label: "About" },
             { path: "/listings", label: "Listings" },
+            { path: "/faq", label: "FAQs"},
+            { path: "/contact", label: "Contact Us"}
           ].map((item) => (
             <Link
               key={item.path}

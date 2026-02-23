@@ -20,6 +20,9 @@ const errorHandler = require("./middleware/error.middleware");
 const leadRoutes = require("./routes/lead.routes");
 const listerInquiryRoutes = require("./routes/lister.inquiry.routes");
 const userRoutes = require("./routes/admin.users");
+const { forgotPassword, resetPassword} = require("./controllers/auth.controller");
+
+
 
 
 
@@ -60,6 +63,10 @@ app.use(
   "/api/lister/inquiries", listerInquiryRoutes
 );
 app.use("/api/admin/users", userRoutes);
+
+// Password reset routes
+app.use("/api/auth/forgot-password", forgotPassword);
+app.use("/api/auth/reset-password/:token", resetPassword);
 
 
 app.use(errorHandler);

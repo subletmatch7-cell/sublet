@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
-import AboutHero from '../../components/about/AHero'
-import ProblemSection from '../../components/about/Problem'
-import ApproachSection from '../../components/about/Approach'
+import AboutPage from '../../components/about/AboutPage';
+
 
 const About = () => {
     useEffect(() => {
@@ -9,9 +8,7 @@ const About = () => {
     }, []);
   return (
     <div>
-      <AboutHero/>
-      <ProblemSection/>
-      <ApproachSection/>
+      <AboutPage/>
     </div>
   )
 }
