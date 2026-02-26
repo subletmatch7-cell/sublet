@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import GoogleLoginButton from "../../components/auth/GoogleButton";
+
 
 export default function Login() {
   const { login } = useAuth();
@@ -207,7 +209,7 @@ export default function Login() {
             </div>
           </div>
 
-          <button 
+          {/* <button 
             type="button"
             className="w-full py-3 rounded-lg font-medium border transition-all hover:bg-gray-50 active:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
             style={{ 
@@ -225,7 +227,15 @@ export default function Login() {
               </svg>
               <span>Continue with Google</span>
             </div>
-          </button>
+          </button> */}
+
+          <div className="mt-6">
+            <GoogleLoginButton />
+          </div>
+
+
+
+ 
         </form>
 
         <div className="text-center mt-8">

@@ -29,6 +29,8 @@ router.get("/", async (req, res) => {
     })
   );
 
+ 
+
   res.json(enrichedUsers);
 });
 

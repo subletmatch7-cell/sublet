@@ -47,7 +47,23 @@ app.use(
   })
 );
 
-app.use(cors({ origin: process.env.FRONTEND_URL }));
+app.use((req, res, next) => {
+  res.setHeader(
+    "Cross-Origin-Opener-Policy",
+    "same-origin-allow-popups"
+  );
+  next();
+});
+
+app.use(cors({ 
+  origin: [
+    "https://localhost:5173",
+    "https://www.subletmatch.com",
+    "https://subletmatch.com",
+    "http://subletmatch.com",
+  ]
+}));
+
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);

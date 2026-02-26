@@ -161,7 +161,7 @@ export default function FAQ() {
       <div className="bg-gradient-to-br from-white via-blue-50 to-[#95BDCB]/20 py-16 border-b border-[#95BDCB]/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#3BC0E9]/10 border border-[#3BC0E9]/20 mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#3BC0E9] mr-2 animate-pulse"></span>
+           
             <span className="text-xs font-medium text-[#242B38] uppercase tracking-wider">
               Got Questions?
             </span>
@@ -220,7 +220,7 @@ export default function FAQ() {
       </div>
 
       {/* FAQ Items */}
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {filteredFaqs.length === 0 ? (
           <div className="text-center py-12">
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#3BC0E9]/10 flex items-center justify-center">
