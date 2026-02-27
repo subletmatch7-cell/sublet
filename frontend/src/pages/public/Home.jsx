@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import HeroSection from '../../components/home/Hero';
-import FeaturedListingsSection from '../../components/home/FeathuredListing';
 import Listings from './Listings';
 
 
@@ -11,7 +10,6 @@ const Home = () => {
   return (
     <div>
       <Listings/>
-      <FeaturedListingsSection/>
       <HeroSection/>
      
    

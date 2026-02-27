@@ -2,11 +2,11 @@ import Sidebar from "../components/common/Sidebar";
 import Navbar from "../components/common/Navbar";
 
 const links = [
-  { label: "Listings", to: "/admin/dashboard" },
+  { label: "Manage Listings", to: "/admin/manage-listings" },
   { label: "Inquiries", to: "/admin/inquiries" },
   { label: "Leads", to: "/admin/leads" },
   { label: "Users", to: "/admin/users" },
-  { label: "Manage Listings", to: "/admin/manage-listings" },
+  
   { label: "Settings", to: "/admin/settings" }
 ];
 

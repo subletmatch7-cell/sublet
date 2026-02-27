@@ -14,6 +14,8 @@ exports.createListing = async (req, res) => {
   res.status(201).json(listing);
 };
 
+
+
 // READ (PUBLIC)
 exports.getListings = async (req, res) => {
   const { city, minPrice, maxPrice } = req.query;

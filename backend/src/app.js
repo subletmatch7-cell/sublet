@@ -57,7 +57,7 @@ app.use((req, res, next) => {
 
 app.use(cors({ 
   origin: [
-    "https://localhost:5173",
+    "http://localhost:5173",
     "https://www.subletmatch.com",
     "https://subletmatch.com",
     "http://subletmatch.com",

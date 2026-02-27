@@ -130,7 +130,6 @@ export default function Listings() {
           <div className="text-center mb-10">
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-light text-[#242B38] mb-4">
               Sublet Match 
-              
               <br/> 
               Your Perfect{' '}
               <span className="bg-gradient-to-r font-bold from-[#3BC0E9] to-[#95BDCB] bg-clip-text text-transparent">
@@ -161,7 +160,6 @@ export default function Listings() {
           {/* Filter Chips & Toggle */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-2">
             <div className="flex flex-wrap items-center gap-3">
-              
               <button 
                 onClick={() => setAvailability("available-now")}
                 className="px-4 py-2 bg-white hover:bg-[#3BC0E9]/10 text-[#242B38] text-sm rounded-full border border-[#95BDCB]/50 shadow-sm transition-all hover:border-[#3BC0E9]"
